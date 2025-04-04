@@ -51,9 +51,10 @@ func (t *stdioServerTransport) Run() error {
 	ctx, cancel := context.WithCancel(context.Background())
 	t.cancel = cancel
 
+	close(t.receiveShutDone)
+
 	t.receive(ctx)
 
-	close(t.receiveShutDone)
 	return nil
 }
 

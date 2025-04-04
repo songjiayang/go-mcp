@@ -120,7 +120,6 @@ func signalWaiter(errCh chan error) error {
 
 	signals := make(chan os.Signal, 1)
 	signal.Notify(signals, signalToNotify...)
-	<-signals
 
 	select {
 	case sig := <-signals:
